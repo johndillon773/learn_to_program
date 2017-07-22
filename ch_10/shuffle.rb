@@ -8,29 +8,18 @@ def rec_shuffle unshuffled, shuffled
     return shuffled
   end
 
-  to_shuffle        = unshuffled.pop
-  still_unshuffled  = []
-
-  unshuffled.each do |tested_object|        
-    
-    rnd = rand(2)                           
-    
-    if rnd == 1
-      shuffled.push to_shuffle
-      to_shuffle = tested_object
-    else
-      still_unshuffled.push tested_object
-    end
-
+  while unshuffled.size > 0
+    i = rand(unshuffled.size)
+    shuffled << unshuffled[i]
+    unshuffled.delete_at(i)
   end
 
-  shuffled.push to_shuffle
-
-  rec_shuffle(still_unshuffled, shuffled)
-
+  shuffled
 end
 
 
-my_arr = ["A", "B", "C", "a", "b", "c"]
+
+
+my_arr = ["Chica", "Ale", "John", "Paloma", "Barb", "mike", "jaime", "connor"]
 
 puts shuffle(my_arr)
